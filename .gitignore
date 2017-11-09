@@ -1,0 +1,5 @@
+config.py
+
+teapotenv/
+.idea/
+.DS_Store
