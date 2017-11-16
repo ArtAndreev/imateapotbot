@@ -1,13 +1,19 @@
 import config
 
 import telebot
+import logging
+import logging.config
 
 bot = telebot.TeleBot(config.TOKEN)
+
+logging.config.fileConfig('logging.conf')
+bot_logger = logging.getLogger('TeleBot')
 
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    bot.reply_to(message, "How can I help you?")
+    bot.send_message(message.chat.id,
+                     'Привет, %s!\nЧто хочешь сделать?' %message.chat.first_name)
 
 
 # testing messages
