@@ -70,3 +70,14 @@ def search_tutor(current_session, sub_tab, task_tab, mode_tab, tutor_base, user_
         # получили набор подходящих юзеров
         # далее его надо перекинуть студенту,плюс надо докинуть инфу о цене и знаниях
         # это лежит в row
+
+
+def change_knowledge(current_session, tutor_tab, request_id,rating):
+    s_user = current_session.query(tutor_tab).filter(tutor_tab.id == request_id).first()
+
+    s_user.interactions += 1
+    s_user.knowledge = (s_user.knowledge + rating) / s_user.interactions
+
+    current_session.add(s_user)
+    current_session.commit()
+

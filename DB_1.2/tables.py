@@ -75,5 +75,16 @@ class Student(Base):
     mods = relationship(Mode)
 
 
+class Deal(Base):
+    __tablename__ = 'deals'
+
+    id = Column(Integer, primary_key=True)
+    request_id = Column(Integer, ForeignKey('tutors.id'))
+    student_id = Column(Integer, ForeignKey('users.id'))
+
+    users = relationship(User)
+    tutors = relationship(Tutor)
+
+
 engine = create_engine('sqlite:///tea_pot.db')
 Base.metadata.create_all(engine)

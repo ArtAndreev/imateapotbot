@@ -26,8 +26,9 @@ def create_user(username):
     return s_user
 
 
-def change_karma(current_session, user_tab,user_id,rating):
+def change_karma(current_session, user_tab,user_id,rating): #сразу вносит все изменения в таблицу
     s_user = current_session.query(user_tab).filter(user_tab.id == user_id).first()
     s_user.interactions += 1
     s_user.karma = (s_user.karma + rating) / s_user.interactions
-    return s_user  # внести в основной изменение в таблице
+    current_session.add(s_user)
+    current_session.commit()
