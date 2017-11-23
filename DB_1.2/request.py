@@ -1,6 +1,6 @@
 
 def get_request(current_session, sub_tab, task_tab, mode_tab):
-    new_subject_ans = int(input('Ведите номер предмета: '))  # тут надоотправлять пользователю
+    new_subject_ans = int(input('Ведите номер предмета: '))  # тут надо отправлять пользователю
     # список доступных предметов
     task_name_ans = int(input('выберете номер варианта: '))  # тоже и с режимом и с названием задания
     task_mode_ans = int(input('выберете номер режима: '))
@@ -12,8 +12,8 @@ def get_request(current_session, sub_tab, task_tab, mode_tab):
 
 
 def add_tutor(current_session, user, tutor_base, sub_tab, task_tab, mode_tab):
-    print('Добавьте новый предмет: ')
-    task_price = input('что вы хотите за выполнение?: ')
+    print('Добавьте новый предмет: ')   # проработать тут связь с пользователем
+    task_price = input('что вы хотите за выполнение?: ')   # проработать тут связь с пользователем
 
     new_subject, task_name, task_mode = get_request(current_session, sub_tab, task_tab, mode_tab)
 
@@ -57,7 +57,7 @@ def search_tutor(current_session, sub_tab, task_tab, mode_tab, tutor_base, user_
 
     new_subject, task_name, task_mode = get_request(current_session, sub_tab, task_tab, mode_tab)
 
-    knowledge_rating = int(input('какой процент знаний вас устроит?(от 0 до 100): '))
+    knowledge_rating = int(input('какой процент знаний вас устроит?(от 0 до 100): '))  # проработать тут связь с пользователем
     tutors = current_session.query(tutor_base).\
         filter(tutor_base.subjects == new_subject,
                tutor_base.mods == task_mode,
@@ -81,3 +81,10 @@ def change_knowledge(current_session, tutor_tab, request_id,rating):
     current_session.add(s_user)
     current_session.commit()
 
+
+def change_price(current_session, tutor_tab, tut_id,new_price):  # проработать тут связь с пользователем для получения новой цены
+    request = current_session.query(tutor_tab).filter(tutor_tab.id == tut_id).first()
+    request.price = new_price
+
+    current_session.add(request)
+    current_session.commit()

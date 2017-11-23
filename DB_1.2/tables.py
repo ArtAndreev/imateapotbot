@@ -76,14 +76,21 @@ class Student(Base):
 
 
 class Deal(Base):
-    __tablename__ = 'deals'
+    __tablename__ = 'conections'
 
     id = Column(Integer, primary_key=True)
     request_id = Column(Integer, ForeignKey('tutors.id'))
     student_id = Column(Integer, ForeignKey('users.id'))
+    status = Column(String(20))
+    student_karma = Column(Integer)
+    tutor_karma = Column(Integer)
+    knowledge_rating = Column(Integer)
 
     users = relationship(User)
     tutors = relationship(Tutor)
+
+    def __init__(self):
+        status = 'open'
 
 
 engine = create_engine('sqlite:///tea_pot.db')
