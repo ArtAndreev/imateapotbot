@@ -1,0 +1,25 @@
+user_test = get_my_information('@try')
+print(user_test)
+
+my_deals = get_my_requests('@try')
+for row in my_deals:
+    print(row)
+
+my_deals = get_my_open_deals('@try')
+
+print(my_deals)
+
+# my_deals = get_my_all_deals('@try',2)
+# for row in my_deals:
+#     print(row)
+
+# def deal_rating(stud_id, req_id, stud_karma, tut_karma, rating): session.query(Entry).join(Entry.blog).filter(Blog.name=='Beatles Blog')
+#     deal = session.query(Deal).filter(Deal.student_id == stud_id,
+#                                       Deal.request_id == req_id).first()
+#     deal.student_karma = stud_karma
+#     deal.knowledge_rating = rating
+#     deal.tutor_karma = tut_karma
+#     deal.status = 'end'
+#     users.change_karma(session, User, stud_id, stud_karma)
+#     users.change_karma(session, User, tut_karma, stud_karma)
+#     request.change_knowledge(session, Tutor, req_id, rating)

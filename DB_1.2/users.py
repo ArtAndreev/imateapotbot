@@ -32,5 +32,14 @@ def change_karma(current_session, user_tab,user_id,rating):  # сразу вно
     s_user = current_session.query(user_tab).filter(user_tab.id == user_id).first()
     s_user.interactions += 1
     s_user.karma = (s_user.karma + rating) / s_user.interactions
+
+    current_session.add(s_user)
+    current_session.commit()
+
+
+def change_connection(current_session, user_tab,user_id,new_username):
+    s_user = current_session.query(user_tab).filter(user_tab.id == user_id).first()
+    s_user.connection = new_username
+
     current_session.add(s_user)
     current_session.commit()

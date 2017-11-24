@@ -38,9 +38,6 @@ class User(Base):  # разобраться с connection, photo
     interactions = Column(Integer)
     connection = Column(String(250), nullable=False)
 
-    def __repr__(self):
-        return '<User %r>' % (self.name)
-
 
 class Tutor(Base):
     __tablename__ = 'tutors'
@@ -90,7 +87,7 @@ class Deal(Base):
     tutors = relationship(Tutor)
 
     def __init__(self):
-        status = 'open'
+        self.status = 'open'
 
 
 engine = create_engine('sqlite:///tea_pot.db')
