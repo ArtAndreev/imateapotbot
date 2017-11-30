@@ -1,6 +1,6 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
+# from sqlalchemy import create_engine
 from sqlalchemy.orm import relationship
 
 Base = declarative_base()
@@ -90,5 +90,5 @@ class Deal(Base):
         self.status = 'open'
 
 
-engine = create_engine('sqlite:///tea_pot.db')
-Base.metadata.create_all(engine)
+# engine = create_engine('sqlite:///tea_pot.db')
+# Base.metadata.create_all(engine)

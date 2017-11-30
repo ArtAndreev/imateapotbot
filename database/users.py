@@ -1,16 +1,20 @@
-from tables import User
+from . import User
 
 
-def create_user(current_session, username):
+def create_user(current_session, bot, username):  # пользователь может менять инфу добавишь
+    bot.send_message(username, 'Как тебя зовут?')
     s_name = input('Как тебя зовут?: ')
+    bot.send_message(username, 'С какого ты факультета?')
     s_faculty = input('С какого ты факультета?: ')
     s_tutor = 0
     s_student = 0
 
+    bot.send_message(username, 'Ты хочешь найти репетитора? (Да/Нет)')
     ans_for_student = input('Ты хочешь найти репетитора?(да/нет): ')
+    bot.send_message(username, 'Ты хочешь кому-то помогать? (Да/Нет)')  # сделаю тут клавиатуру да нет из двух столбцов
     ans_for_tutor = input('Ты хочешь кому-то помочь?(да/нет): ')
 
-    if ans_for_tutor == 'да':  # не уверена что нам это надо, так как нигде не используется
+    if ans_for_tutor == 'да':  # не уверена что нам это надо, так как нигде не используется # надо заюзать lower
         s_tutor = 1
 
     if ans_for_student == 'да':  # аналогично
@@ -22,7 +26,7 @@ def create_user(current_session, username):
                   student=s_student,
                   tutor=s_tutor,
                   interactions=0,
-                  connection=username)
+                  connection=username)  # id
 
     current_session.add(s_user)
     current_session.commit()

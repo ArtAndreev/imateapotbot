@@ -4,6 +4,7 @@ teapotenv/
 __pycache__/
 
 .idea/
-.DS_Store
+*.DS_Store
 
-bot.log
+*.log
+*.db
