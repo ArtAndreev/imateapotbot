@@ -1,0 +1,19 @@
+# macOS files
+.DS_Store
+
+# git files
+.git
+.gitignore
+
+# IDE files
+.idea
+
+# virtualenv-s
+teapotenv
+
+# python temp files
+__pycache__
+
+# log files, readme etc.
+*.log
+*.md
